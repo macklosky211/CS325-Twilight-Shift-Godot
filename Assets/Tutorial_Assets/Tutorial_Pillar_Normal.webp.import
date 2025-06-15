@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://gdqgxijly22h"
+path.s3tc="res://.godot/imported/Tutorial_Pillar_Normal.webp-f7c9e370710a43863ab28b441e6e7613.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d59a94f9280613b729e6cd3296f48c17"
+}
+
+[deps]
+
+source_file="res://Assets/Tutorial_Assets/Tutorial_Pillar_Normal.webp"
+dest_files=["res://.godot/imported/Tutorial_Pillar_Normal.webp-f7c9e370710a43863ab28b441e6e7613.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Tutorial_Pillar_Normal.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

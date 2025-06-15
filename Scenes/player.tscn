@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl8icdp5c3cuk"]
+
+[ext_resource type="Script" uid="uid://banaknlv63578" path="res://Scripts/player_controller.gd" id="1_v0iea"]
+[ext_resource type="Environment" uid="uid://4yaiuj0wdj8r" path="res://Assets/Skyboxes/Dawn_Skybox.tres" id="2_cvnsp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
+
+[node name="Player" type="CharacterBody3D"]
+floor_max_angle = 1.0472
+floor_snap_length = 0.15
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f60y1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_v0iea")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D"]
+environment = ExtResource("2_cvnsp")
+
+[node name="Switch_Timer" type="Timer" parent="."]

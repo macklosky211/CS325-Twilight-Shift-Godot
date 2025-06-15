@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://4yaiuj0wdj8r"]
+
+[ext_resource type="Texture2D" uid="uid://cn6q6v14p782n" path="res://Assets/Skyboxes/Dawn_Skybox.webp" id="1_dmc7f"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6t5aa"]
+panorama = ExtResource("1_dmc7f")
+
+[sub_resource type="Sky" id="Sky_vgqql"]
+sky_material = SubResource("PanoramaSkyMaterial_6t5aa")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_vgqql")

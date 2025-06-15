@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3t44ywhthrdy"]
+
+[ext_resource type="PackedScene" uid="uid://cl8icdp5c3cuk" path="res://Scenes/player.tscn" id="1_ka2pi"]
+[ext_resource type="PackedScene" uid="uid://bmbb2r8wgpk6v" path="res://Assets/Tutorial_Assets/tutorial_model.tscn" id="2_feyax"]
+
+[node name="Tutorial" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_ka2pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
+
+[node name="Tutorial" parent="." instance=ExtResource("2_feyax")]
