@@ -3,6 +3,8 @@ class_name Level
 
 @onready var dusk: Node3D = $Dusk
 @onready var dawn: Node3D = $Dawn
+@onready var door_animation_player: AnimationPlayer = $Puzzle_Door/DoorAnimationPlayer
+@onready var button_animation_player: AnimationPlayer = $Cube_001/ButtonAnimationPlayer
 
 enum {DUSK, DAWN}
 
@@ -17,3 +19,9 @@ func _shift_dimension() -> void:
 
 func _toggle(object : Node3D, visibility : bool) -> void:
 	object.visible = visibility
+
+
+func _on_tutorial_door_button_pressed() -> void:
+	button_animation_player.play("Cube_001Action")
+	await button_animation_player.animation_finished
+	door_animation_player.play("Puzzle_DoorAction")

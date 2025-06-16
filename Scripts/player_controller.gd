@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera3D
+@onready var raycast: RayCast3D = $Camera3D/RayCast3D
 @onready var level : Level = $"../Tutorial"
 @onready var switch_timer: Timer = $Switch_Timer
 
@@ -32,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		level._shift_dimension()
 		_toggle_dimension()
 	elif switch_timer.is_stopped(): switch_timer.start(SWITCH_TIME)
+	
+	if Input.is_action_just_pressed("Interact"): _try_interacting()
 	
 	if Input.is_action_just_pressed("Escape"): _lock_mouse(not is_mouse_locked)
 	
@@ -76,3 +79,9 @@ const DUSK_SKYBOX = preload("res://Assets/Skyboxes/Dusk_Skybox.tres")
 func _set_skybox(val) -> void:
 	if val == DAWN: world_environment.environment = DAWN_SKYBOX
 	elif val == DUSK: world_environment.environment = DUSK_SKYBOX
+
+func _try_interacting() -> void:
+	if raycast.is_colliding() and raycast.get_collider() is Interactable: 
+		print("SHould be interacting")
+		raycast.get_collider().interact()
+	elif raycast.is_colliding(): print("Raycast hit: ", raycast.get_collider().get_class(), " ", raycast.get_collider().name)
