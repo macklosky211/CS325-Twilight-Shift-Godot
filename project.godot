@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CS325-Twilight-Shift"
-run/main_scene="uid://c3t44ywhthrdy"
+run/main_scene="uid://dfjrhny1vh6wy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [input]

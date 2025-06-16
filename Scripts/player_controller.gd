@@ -1,9 +1,11 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var camera: Camera3D = $Camera3D
 @onready var raycast: RayCast3D = $Camera3D/RayCast3D
 @onready var level : Level = $"../Tutorial"
 @onready var switch_timer: Timer = $Switch_Timer
+@onready var end_level_animation_player: AnimationPlayer = $Camera3D/HUD/End_Level_Effect/End_Level_Animation_Player
 
 const ACCEL : float = 1.0
 const SPRINT_SPEED: float = 7.5

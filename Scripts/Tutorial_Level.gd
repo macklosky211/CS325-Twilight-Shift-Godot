@@ -25,3 +25,13 @@ func _on_tutorial_door_button_pressed() -> void:
 	button_animation_player.play("Cube_001Action")
 	await button_animation_player.animation_finished
 	door_animation_player.play("Puzzle_DoorAction")
+
+
+func _on_portal_collider_entered(body: Node3D) -> void:
+	if body is not Player: return
+	
+	print("Completed the level!")
+	body.end_level_animation_player.play("CRT_Poweroff")
+	await body.end_level_animation_player.animation_finished
+	body._lock_mouse(false) # Unlock the players mouse...
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
