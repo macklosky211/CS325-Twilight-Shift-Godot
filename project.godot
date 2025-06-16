@@ -67,3 +67,7 @@ Interact={
 
 3d_physics/layer_2="Dusk"
 3d_physics/layer_3="Dawn"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
