@@ -83,7 +83,4 @@ func _set_skybox(val) -> void:
 	elif val == DUSK: world_environment.environment = DUSK_SKYBOX
 
 func _try_interacting() -> void:
-	if raycast.is_colliding() and raycast.get_collider() is Interactable: 
-		print("SHould be interacting")
-		raycast.get_collider().interact()
-	elif raycast.is_colliding(): print("Raycast hit: ", raycast.get_collider().get_class(), " ", raycast.get_collider().name)
+	if raycast.is_colliding() and raycast.get_collider() is Interactable: raycast.get_collider().interact()

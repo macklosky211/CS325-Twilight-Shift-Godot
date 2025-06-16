@@ -34,4 +34,4 @@ func _on_portal_collider_entered(body: Node3D) -> void:
 	body.end_level_animation_player.play("CRT_Poweroff")
 	await body.end_level_animation_player.animation_finished
 	body._lock_mouse(false) # Unlock the players mouse...
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
