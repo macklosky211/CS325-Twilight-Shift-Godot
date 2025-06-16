@@ -204,4 +204,11 @@ offset_bottom = 350.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
+[node name="Tooltips_Label" type="RichTextLabel" parent="Camera3D/HUD"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 69.0
+offset_right = 546.0
+offset_bottom = 317.0
+
 [node name="Switch_Timer" type="Timer" parent="."]

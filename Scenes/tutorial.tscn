@@ -1,11 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3t44ywhthrdy"]
+[gd_scene load_steps=6 format=3 uid="uid://c3t44ywhthrdy"]
 
 [ext_resource type="PackedScene" uid="uid://cl8icdp5c3cuk" path="res://Scenes/player.tscn" id="1_ka2pi"]
+[ext_resource type="Script" uid="uid://cflo56u3wssgu" path="res://Scripts/tutorial.gd" id="1_omtrn"]
 [ext_resource type="PackedScene" uid="uid://bmbb2r8wgpk6v" path="res://Assets/Tutorial_Assets/tutorial_model.tscn" id="2_feyax"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_feyax"]
+size = Vector3(3.93263, 2.00281, 0.857666)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_omtrn"]
+size = Vector3(2.01192, 2.00281, 2.62415)
+
 [node name="Tutorial" type="Node"]
+script = ExtResource("1_omtrn")
+
+[node name="ToolTip_Timer" type="Timer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_ka2pi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
 
 [node name="Tutorial" parent="." instance=ExtResource("2_feyax")]
+
+[node name="Tutorial_0" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.468208, 0.501404, 0.0478516)
+shape = SubResource("BoxShape3D_feyax")
+
+[node name="Tutorial_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9.00622)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_1"]
+shape = SubResource("BoxShape3D_feyax")
+
+[node name="Tutorial_2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8.52239, -0.178841)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905072, 0, -0.88324)
+shape = SubResource("BoxShape3D_omtrn")
+
+[connection signal="body_entered" from="Tutorial_0" to="." method="_on_tutorial_0_entered"]
+[connection signal="body_entered" from="Tutorial_1" to="." method="_on_tutorial_1_entered"]
+[connection signal="body_entered" from="Tutorial_2" to="." method="_on_tutorial_2_entered"]
+
+[editable path="Player"]
