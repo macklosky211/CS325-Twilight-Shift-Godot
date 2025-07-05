@@ -1,16 +1,37 @@
-extends Node
+extends Level
 
 @onready var tooltips_label: RichTextLabel = $Player/Camera3D/HUD/Tooltips_Label
 @onready var tool_tip_timer: Timer = $ToolTip_Timer
 
+@onready var door_animation_player: AnimationPlayer = $Tutorial/Puzzle_Door/DoorAnimationPlayer
+@onready var button_animation_player: AnimationPlayer = $Tutorial/Cube_001/ButtonAnimationPlayer
+
+func _init() -> void:
+	path = "res://Scenes/tutorial.tscn"
+
 func _ready() -> void:
 	tool_tip_timer.timeout.connect(func() -> void: tooltips_label.visible = false)
+	dawn = $Tutorial/Dawn
+	dusk = $Tutorial/Dusk
+	_shift_dimension() # This puts us into DAWN at the start of the level...
 
 func _set_text(text : String, time : float) -> void:
 	tooltips_label.text = text
 	tooltips_label.visible = true
 	tool_tip_timer.start(time)
 
+func _on_tutorial_door_button_pressed() -> void:
+	button_animation_player.play("Cube_001Action")
+	await button_animation_player.animation_finished
+	door_animation_player.play("Puzzle_DoorAction")
+
+func _on_portal_collider_entered(body: Node3D) -> void:
+	if body is not Player: return
+	
+	print("Completed the level!")
+	body.end_level_animation_player.play("CRT_Poweroff")
+	await body.end_level_animation_player.animation_finished
+	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
 
 var tutorial_0 : bool = true
 func _on_tutorial_0_entered(body: Node3D) -> void:

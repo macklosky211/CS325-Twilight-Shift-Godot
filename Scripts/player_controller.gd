@@ -3,7 +3,7 @@ class_name Player
 
 @onready var camera: Camera3D = $Camera3D
 @onready var raycast: RayCast3D = $Camera3D/RayCast3D
-@onready var level : Level = $"../Tutorial"
+@onready var level : Level = $".."
 @onready var switch_timer: Timer = $Switch_Timer
 @onready var end_level_animation_player: AnimationPlayer = $Camera3D/HUD/End_Level_Effect/End_Level_Animation_Player
 
@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"): _try_interacting()
 	
 	if Input.is_action_just_pressed("Escape"): _lock_mouse(not is_mouse_locked)
+	
+	if Input.is_action_just_pressed("Reset"): reset()
 	
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
 	var speed = SPRINT_SPEED if Input.is_action_pressed("Sprint") else WALK_SPEED
@@ -84,3 +86,8 @@ func _set_skybox(val) -> void:
 
 func _try_interacting() -> void:
 	if raycast.is_colliding() and raycast.get_collider() is Interactable: raycast.get_collider().interact()
+
+func reset() -> void:
+	end_level_animation_player.play("CRT_Poweroff")
+	await end_level_animation_player.animation_finished
+	get_tree().change_scene_to_file(level.path)

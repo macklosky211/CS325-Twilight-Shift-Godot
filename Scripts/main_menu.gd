@@ -22,6 +22,7 @@ func _ready():
 	shift_timer.timeout.connect(_on_shift_timer_timeout)
 	shift_timer.start()
 	start_title_animation()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_start_button_pressed():
 	fade_out_then_change_scene("res://Scenes/tutorial.tscn")
