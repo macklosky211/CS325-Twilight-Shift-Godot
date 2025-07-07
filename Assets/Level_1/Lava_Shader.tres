@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cjxexq7l1w0xx"]
+
+[ext_resource type="Shader" uid="uid://dp2ofgxryx6it" path="res://Scripts/Lava.gdshader" id="1_8e7rt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_evi0p"]
+load_path = "res://.godot/imported/Lava Textures_BaseColor.webp-4ed23480157201c08d3a262d12b4ab99.s3tc.ctex"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_evi0p"]
+frequency = 0.033
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lsmp6"]
+seamless = true
+noise = SubResource("FastNoiseLite_evi0p")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lsmp6"]
+load_path = "res://.godot/imported/Lava Textures_Normal.webp-d877e364a1b75dc1222eaefc8ec663f4.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8e7rt")
+shader_parameter/noise = SubResource("NoiseTexture2D_lsmp6")
+shader_parameter/base_color = SubResource("CompressedTexture2D_evi0p")
+shader_parameter/normal = SubResource("CompressedTexture2D_lsmp6")
+shader_parameter/pan_speed = 0.01
+shader_parameter/strength = 0.25
