@@ -6,6 +6,7 @@ class_name Player
 @onready var level : Level = $".."
 @onready var switch_timer: Timer = $Switch_Timer
 @onready var end_level_animation_player: AnimationPlayer = $Camera3D/HUD/End_Level_Effect/End_Level_Animation_Player
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 const ACCEL : float = 1.0
 const SPRINT_SPEED: float = 7.5
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		audio_stream_player_3d.play()
 	
 	if Input.is_action_just_pressed("Shift_Dimension") and can_toggle_dimension:
 		can_toggle_dimension = false

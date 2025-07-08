@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf4k0sfdbyc3k"]
+[gd_scene load_steps=7 format=3 uid="uid://bf4k0sfdbyc3k"]
 
 [ext_resource type="Script" uid="uid://bwdjdk1lp7myo" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
 [ext_resource type="Shader" uid="uid://jvvn22h2p3nc" path="res://Assets/MainMenu_Assets/realm_shader.gdshader" id="2_853f1"]
+[ext_resource type="AudioStream" uid="uid://c3kf2ad31lnxg" path="res://Assets/Sounds/blipSelect.wav" id="3_8saeu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8saeu"]
 shader = ExtResource("2_853f1")
@@ -139,3 +140,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8saeu")

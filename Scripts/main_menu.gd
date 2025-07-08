@@ -6,7 +6,7 @@ extends Control
 @onready var shader_material = $Background.material
 @onready var shift_timer = $ShiftTimer
 @onready var fade_rect = $FadeReact
-
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var is_twilight = true
 
 func _ready():
@@ -25,6 +25,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_start_button_pressed():
+	audio_stream_player_2d.play()
 	fade_out_then_change_scene("res://Scenes/tutorial.tscn")
 
 func _on_quit_button_pressed():

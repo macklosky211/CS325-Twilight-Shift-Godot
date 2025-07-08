@@ -14,6 +14,10 @@ config/name="CS325-Twilight-Shift"
 run/main_scene="uid://bf4k0sfdbyc3k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 Forward={

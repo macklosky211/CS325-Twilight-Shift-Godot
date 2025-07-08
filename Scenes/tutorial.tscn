@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3t44ywhthrdy"]
+[gd_scene load_steps=7 format=3 uid="uid://c3t44ywhthrdy"]
 
 [ext_resource type="PackedScene" uid="uid://cl8icdp5c3cuk" path="res://Scenes/player.tscn" id="1_ka2pi"]
 [ext_resource type="Script" uid="uid://cflo56u3wssgu" path="res://Scripts/tutorial.gd" id="1_omtrn"]
 [ext_resource type="PackedScene" uid="uid://bmbb2r8wgpk6v" path="res://Assets/Tutorial_Assets/tutorial_model.tscn" id="2_feyax"]
+[ext_resource type="AudioStream" uid="uid://b80aes1opgrhq" path="res://Assets/Sounds/Bluezone_BC0302_industrial_lever_switch_small_003.wav" id="4_i6t4g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_feyax"]
 size = Vector3(3.93263, 2.00281, 0.857666)
@@ -40,6 +41,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8.52239, -0.178841)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905072, 0, -0.88324)
 shape = SubResource("BoxShape3D_omtrn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_i6t4g")
+unit_size = 10.7
 
 [connection signal="body_entered" from="Tutorial/Portal/StaticBody3D" to="." method="_on_portal_collider_entered"]
 [connection signal="button_pressed" from="Tutorial/Cube_001/StaticBody3D_Button" to="." method="_on_tutorial_door_button_pressed"]

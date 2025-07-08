@@ -5,6 +5,7 @@ extends Level
 
 @onready var door_animation_player: AnimationPlayer = $Tutorial/Puzzle_Door/DoorAnimationPlayer
 @onready var button_animation_player: AnimationPlayer = $Tutorial/Cube_001/ButtonAnimationPlayer
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _init() -> void:
 	path = "res://Scenes/tutorial.tscn"
@@ -22,6 +23,7 @@ func _set_text(text : String, time : float) -> void:
 
 func _on_tutorial_door_button_pressed() -> void:
 	button_animation_player.play("Cube_001Action")
+	audio_stream_player_3d.play()
 	await button_animation_player.animation_finished
 	door_animation_player.play("Puzzle_DoorAction")
 
