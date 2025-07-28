@@ -18,7 +18,7 @@ const SWITCH_TIME : float = 1.0 # Min time between dimension swaps
 
 var is_mouse_locked : bool = false
 var can_toggle_dimension : bool = true
-
+var is_on_moving_platform : MovingPlatform = null
 
 func _ready() -> void:
 	_toggle_dimension()
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and (is_on_floor() or is_on_moving_platform):
 		velocity.y = JUMP_VELOCITY
 		audio_stream_player_3d.play()
 	
@@ -39,21 +39,24 @@ func _physics_process(delta: float) -> void:
 	elif switch_timer.is_stopped(): switch_timer.start(SWITCH_TIME)
 	
 	if Input.is_action_just_pressed("Interact"): _try_interacting()
-	
 	if Input.is_action_just_pressed("Escape"): _lock_mouse(not is_mouse_locked)
-	
 	if Input.is_action_just_pressed("Reset"): reset()
 	
-	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
-	var speed = SPRINT_SPEED if Input.is_action_pressed("Sprint") else WALK_SPEED
+	var input_dir : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward")
+	var speed : float = SPRINT_SPEED if Input.is_action_pressed("Sprint") else WALK_SPEED
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if is_on_moving_platform: speed += absf(is_on_moving_platform.velocity.length())
+	
 	if direction:
 		velocity.x = move_toward(velocity.x, direction.x * speed, ACCEL)
 		velocity.z = move_toward(velocity.z, direction.z * speed, ACCEL)
+	elif is_on_moving_platform:
+		velocity = velocity.move_toward(is_on_moving_platform.velocity, speed)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
+	
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -90,6 +93,8 @@ func _try_interacting() -> void:
 	if raycast.is_colliding() and raycast.get_collider() is Interactable: raycast.get_collider().interact()
 
 func reset() -> void:
+	var level_path : String = level.path
 	end_level_animation_player.play("CRT_Poweroff")
 	await end_level_animation_player.animation_finished
-	get_tree().change_scene_to_file(level.path)
+	if is_inside_tree():
+		get_tree().change_scene_to_file(level_path)
