@@ -24,7 +24,7 @@ func _on_portal_entered(body: Node3D) -> void:
 	
 	body.end_level_animation_player.play("CRT_Poweroff")
 	await body.end_level_animation_player.animation_finished
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/level_3.tscn")
 
 
 func _on_lava_entered(body: Node3D) -> void:
