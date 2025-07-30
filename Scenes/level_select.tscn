@@ -1,6 +1,5 @@
 [gd_scene load_steps=9 format=3 uid="uid://bl28fosvs34uc"]
 
-[ext_resource type="Script" uid="uid://cdfbw8ahhs1pq" path="res://Scenes/level_select.gd" id="1_1fiak"]
 [ext_resource type="Texture2D" uid="uid://j0bab7bnwro5" path="res://Assets/Backgrounds/Levelselectbg.png" id="2_nkys2"]
 
 [sub_resource type="Theme" id="Theme_nkys2"]
