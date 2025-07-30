@@ -3,7 +3,6 @@
 [ext_resource type="Shader" uid="uid://dp2ofgxryx6it" path="res://Scripts/Lava.gdshader" id="1_8e7rt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_evi0p"]
-load_path = "res://.godot/imported/Lava Textures_BaseColor.webp-4ed23480157201c08d3a262d12b4ab99.s3tc.ctex"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_evi0p"]
 frequency = 0.033
@@ -14,7 +13,6 @@ seamless = true
 noise = SubResource("FastNoiseLite_evi0p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lsmp6"]
-load_path = "res://.godot/imported/Lava Textures_Normal.webp-d877e364a1b75dc1222eaefc8ec663f4.s3tc.ctex"
 
 [resource]
 render_priority = 0
