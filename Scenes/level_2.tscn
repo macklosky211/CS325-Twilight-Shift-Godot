@@ -135,6 +135,18 @@ grow_horizontal = 0
 label_settings = SubResource("LabelSettings_v36qu")
 script = ExtResource("5_v36qu")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="11"]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" index="0"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_v36qu")
+script = ExtResource("5_v36qu")
+
 [connection signal="body_entered" from="Portal/StaticBody3D" to="." method="_on_portal_entered"]
 [connection signal="body_entered" from="Lava/AreaBody3D" to="." method="_on_lava_entered"]
 
