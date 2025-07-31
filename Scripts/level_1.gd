@@ -19,3 +19,4 @@ func _on_portal_entered(body: Node3D) -> void:
 func _lava_entered(body: Node3D) -> void:
 	if body is not Player: return
 	body.reset()
+	

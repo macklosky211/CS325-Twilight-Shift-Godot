@@ -8,6 +8,7 @@ extends Control
 
 func _ready():
 	# Connect button signals
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if tutorial_btn:
 		tutorial_btn.pressed.connect(_on_tutorial_pressed)
 	if level1_btn:
