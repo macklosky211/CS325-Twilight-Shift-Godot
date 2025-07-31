@@ -14,7 +14,9 @@ func _on_portal_entered(body: Node3D) -> void:
 	if body is not Player: return
 	body.end_level_animation_player.play("CRT_Poweroff")
 	await body.end_level_animation_player.animation_finished
-	get_tree().change_scene_to_file("res://Scenes/level_select.tscn")
+	
+	#get_tree().change_scene_to_file("res://Scenes/level_select.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/level_2.tscn")
 
 
 func _lava_entered(body: Node3D) -> void:

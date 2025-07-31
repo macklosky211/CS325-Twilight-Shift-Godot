@@ -7,6 +7,7 @@ class_name Player
 @onready var switch_timer: Timer = $Switch_Timer
 @onready var end_level_animation_player: AnimationPlayer = $Camera3D/HUD/End_Level_Effect/End_Level_Animation_Player
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var progress_bar: ProgressBar = $Camera3D/HUD/ProgressBar
 
 const ACCEL : float = 1.0
 const SPRINT_SPEED: float = 7.5
@@ -16,7 +17,7 @@ const CAMERA_SENS : float = 0.001
 const SWITCH_TIME : float = 1.0
 const MAX_CHARGE_TIME: float = 2.0
 const MIN_JUMP_FORCE: float = 3.0
-const MAX_JUMP_FORCE: float = 10.0
+const MAX_JUMP_FORCE: float = 6.0
 
 var is_mouse_locked : bool = false
 var can_toggle_dimension : bool = true
@@ -34,24 +35,24 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	if is_on_floor() or is_on_moving_platform:
-		if Input.is_action_pressed("Charge_Jump"):
+		if Input.is_action_pressed("Jump"):
 			if not is_charging_jump:
 				is_charging_jump = true
 				jump_charge_timer = 0.0
+				progress_bar.visible = true
 			else:
-				jump_charge_timer += delta
-		elif is_charging_jump and Input.is_action_just_released("Charge_Jump"):
+				jump_charge_timer = clampf(jump_charge_timer + delta, 0.0, MAX_CHARGE_TIME)
+				progress_bar.value = jump_charge_timer / MAX_CHARGE_TIME
+				#print(jump_charge_timer / MAX_CHARGE_TIME, " ", jump_charge_timer, MAX_CHARGE_TIME)
+		elif is_charging_jump and Input.is_action_just_released("Jump"):
 			is_charging_jump = false
 			var charge_ratio = clampf(jump_charge_timer / MAX_CHARGE_TIME, 0.0, 1.0)
 			var jump_force = lerp(MIN_JUMP_FORCE, MAX_JUMP_FORCE, charge_ratio)
-			velocity.y = jump_force
+			velocity.y += jump_force
+			var pitch_variation = randf_range(0.9, 1.1)
+			audio_stream_player_3d.pitch_scale = pitch_variation
 			audio_stream_player_3d.play()
-
-	if Input.is_action_just_pressed("Jump") and (is_on_floor() or is_on_moving_platform):
-		velocity.y = JUMP_VELOCITY
-		var pitch_variation = randf_range(0.9, 1.1)
-		audio_stream_player_3d.pitch_scale = pitch_variation
-		audio_stream_player_3d.play()
+			progress_bar.visible = false
 	
 	if Input.is_action_just_pressed("Shift_Dimension") and can_toggle_dimension:
 		can_toggle_dimension = false

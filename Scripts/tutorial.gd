@@ -33,7 +33,7 @@ func _on_portal_collider_entered(body: Node3D) -> void:
 	print("Completed the level!")
 	body.end_level_animation_player.play("CRT_Poweroff")
 	await body.end_level_animation_player.animation_finished
-	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/level_1.tscn")
 
 var tutorial_0 : bool = true
 func _on_tutorial_0_entered(body: Node3D) -> void:

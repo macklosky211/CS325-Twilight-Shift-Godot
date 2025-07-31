@@ -212,6 +212,15 @@ offset_top = 69.0
 offset_right = 546.0
 offset_bottom = 317.0
 
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 605.0
+offset_right = 1137.0
+offset_bottom = 632.0
+max_value = 1.0
+show_percentage = false
+
 [node name="Switch_Timer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://dp2ofgxryx6it" path="res://Scripts/Lava.gdshader" id="3_evi0p"]
 [ext_resource type="AudioStream" uid="uid://barkv82hse5ot" path="res://Assets/Sounds/CLOTHRip_CottonRips13_InMotionAudio_TornTShirt.wav" id="4_wrinw"]
 [ext_resource type="AudioStream" uid="uid://b80aes1opgrhq" path="res://Assets/Sounds/Bluezone_BC0302_industrial_lever_switch_small_003.wav" id="6_chwpn"]
-[ext_resource type="Script" uid="uid://bpm2m4hf5ceeo" path="res://Scenes/timer_label.gd" id="7_lsmp6"]
+[ext_resource type="Script" path="res://Scenes/timer_label.gd" id="7_lsmp6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_evi0p"]
 
@@ -90,9 +90,6 @@ stream = ExtResource("6_chwpn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Portal/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_evi0p")
-
-[node name="Trapdoor" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.1, -8.5)
 
 [node name="Player" parent="." index="11" instance=ExtResource("2_xfk5q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33201, 2.23322, 2.91708)
