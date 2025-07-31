@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp3dogn2tpip"]
+[gd_scene load_steps=16 format=3 uid="uid://cp3dogn2tpip"]
 
 [ext_resource type="PackedScene" uid="uid://cmrgp3k6ce3np" path="res://Assets/Level_2/level_2.blend" id="1_v3rpw"]
 [ext_resource type="Script" uid="uid://cqditf406nvf5" path="res://Scripts/level_2.gd" id="2_12fag"]
 [ext_resource type="PackedScene" uid="uid://cl8icdp5c3cuk" path="res://Scenes/player.tscn" id="2_smnlx"]
 [ext_resource type="Material" uid="uid://cjxexq7l1w0xx" path="res://Assets/Level_1/Lava_Shader.tres" id="3_1q6tm"]
 [ext_resource type="PackedScene" uid="uid://deqhpc7rvs8w3" path="res://Scenes/floating_platform_detector.tscn" id="3_v36qu"]
-[ext_resource type="Script" path="res://Scenes/timer_label.gd" id="6_cggpd"]
+[ext_resource type="AudioStream" uid="uid://barkv82hse5ot" path="res://Assets/Sounds/CLOTHRip_CottonRips13_InMotionAudio_TornTShirt.wav" id="5_055b2"]
+[ext_resource type="Script" uid="uid://bpm2m4hf5ceeo" path="res://Scenes/timer_label.gd" id="6_cggpd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v36qu"]
 size = Vector3(3, 2, 2)
@@ -102,6 +103,9 @@ surface_material_override/0 = ExtResource("3_1q6tm")
 visible = false
 collision_layer = 0
 collision_mask = 0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lava/StaticBody3D" index="1"]
+stream = ExtResource("5_055b2")
 
 [node name="AreaBody3D" type="Area3D" parent="Lava" index="1"]
 visible = false

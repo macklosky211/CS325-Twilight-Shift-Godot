@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b3xgkrw7kmgoe"]
+[gd_scene load_steps=19 format=4 uid="uid://b3xgkrw7kmgoe"]
 
 [ext_resource type="Script" uid="uid://x4khje68i34t" path="res://Scripts/level_3.gd" id="1_ng0s0"]
 [ext_resource type="PackedScene" uid="uid://cl8icdp5c3cuk" path="res://Scenes/player.tscn" id="2_g5cw1"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cki36nysuf0s3" path="res://Assets/Metalic_Textures/Metalic_Textures_BaseColor.webp" id="5_qf6rc"]
 [ext_resource type="Texture2D" uid="uid://47mo0jtcm1hm" path="res://Assets/Metalic_Textures/Metalic_Textures_Roughness.webp" id="6_53xsp"]
 [ext_resource type="Material" uid="uid://cjxexq7l1w0xx" path="res://Assets/Level_1/Lava_Shader.tres" id="7_53xsp"]
-[ext_resource type="Script" path="res://Scenes/timer_label.gd" id="8_5e78q"]
+[ext_resource type="Script" uid="uid://bpm2m4hf5ceeo" path="res://Scenes/timer_label.gd" id="8_5e78q"]
+[ext_resource type="AudioStream" uid="uid://barkv82hse5ot" path="res://Assets/Sounds/CLOTHRip_CottonRips13_InMotionAudio_TornTShirt.wav" id="8_l4wr6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_id8j3"]
 resource_name = "Metalic_Texture"
@@ -154,6 +155,9 @@ surface_material_override/0 = ExtResource("7_53xsp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lava/AreaBody3D" index="0"]
 shape = SubResource("WorldBoundaryShape3D_53xsp")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lava/AreaBody3D" index="1"]
+stream = ExtResource("8_l4wr6")
 
 [node name="TimerLabel" type="Label" parent="." index="10"]
 anchors_preset = 1

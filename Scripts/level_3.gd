@@ -1,4 +1,5 @@
 extends Level
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $Lava/AreaBody3D/AudioStreamPlayer3D
 
 func _init() -> void:
 	path = "res://Scenes/level_3.tscn"
@@ -17,4 +18,5 @@ func _on_portal_entered(body: Node3D) -> void:
 
 func _on_lava_entered(body: Node3D) -> void:
 	if body is not Player: return
+	audio_stream_player_3d.play()
 	body.reset()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tdr2mw4sj6kf"]
+[gd_scene load_steps=18 format=3 uid="uid://tdr2mw4sj6kf"]
 
 [ext_resource type="PackedScene" uid="uid://b0uqiyriaubl6" path="res://Assets/Level_1/Level_1.blend" id="1_8ffim"]
 [ext_resource type="Script" uid="uid://5cjrmoeifgj5" path="res://Scripts/level_1.gd" id="2_8ffim"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://k53b67fobnx0" path="res://Scripts/level_1_door_button.gd" id="3_7p6j4"]
 [ext_resource type="Script" uid="uid://bwe6kfmdm676t" path="res://Scripts/level_1_trapdoor_button.gd" id="3_6444e"]
 [ext_resource type="Shader" uid="uid://dp2ofgxryx6it" path="res://Scripts/Lava.gdshader" id="3_evi0p"]
-[ext_resource type="Script" path="res://Scenes/timer_label.gd" id="7_lsmp6"]
+[ext_resource type="AudioStream" uid="uid://barkv82hse5ot" path="res://Assets/Sounds/CLOTHRip_CottonRips13_InMotionAudio_TornTShirt.wav" id="4_wrinw"]
+[ext_resource type="AudioStream" uid="uid://b80aes1opgrhq" path="res://Assets/Sounds/Bluezone_BC0302_industrial_lever_switch_small_003.wav" id="6_chwpn"]
+[ext_resource type="Script" uid="uid://bpm2m4hf5ceeo" path="res://Scenes/timer_label.gd" id="7_lsmp6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_evi0p"]
 
@@ -59,7 +61,11 @@ visible = false
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape3D" parent="Lava/StaticBody3D" index="0"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lava/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+stream = ExtResource("4_wrinw")
+
+[node name="CollisionShape3D" parent="Lava/StaticBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Area3D" type="Area3D" parent="Lava" index="1"]
@@ -71,8 +77,14 @@ shape = SubResource("ConcavePolygonShape3D_vi8eo")
 [node name="StaticBody3D" parent="TrapDoorButton" index="0"]
 script = ExtResource("3_6444e")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="TrapDoorButton/StaticBody3D" index="0"]
+stream = ExtResource("6_chwpn")
+
 [node name="StaticBody3D" parent="DoorsButton" index="0"]
 script = ExtResource("3_7p6j4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="DoorsButton/StaticBody3D" index="0"]
+stream = ExtResource("6_chwpn")
 
 [node name="StaticBody3D" type="Area3D" parent="Portal" index="0"]
 
